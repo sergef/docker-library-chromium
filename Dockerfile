@@ -16,6 +16,7 @@ RUN apk add --no-cache \
     chromium@community \
     dbus \
     mesa-gl \
+    socat \
     ttf-freefont \
     udev \
   && dbus-uuidgen > /var/lib/dbus/machine-id \
