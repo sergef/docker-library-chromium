@@ -2,16 +2,21 @@ FROM sergef/docker-library-alpine:edge
 
 # curl -o seccomp.json https://raw.githubusercontent.com/jfrazelle/dotfiles/master/etc/docker/seccomp/chrome.json
 # not woking via compose,
-# using:
+# try using:
 # security_opt:
-# - seccomp:unconfined
+#   - seccomp:unconfined
+# or
+# cap_add:
+#  - SYS_ADMIN
+
+# Entrypoing takes 'headless' or 'xvfb' argument
+# to run chrome with different set of parameters.
 
 RUN apk add --no-cache \
     chromium@community \
     dbus \
     mesa-gl \
     ttf-freefont \
-    socat \
     udev \
   && dbus-uuidgen > /var/lib/dbus/machine-id \
   && adduser -G users -g "Chrome User Account" -s /bin/sh -D chrome
